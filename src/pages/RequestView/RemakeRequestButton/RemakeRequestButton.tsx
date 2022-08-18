@@ -1,6 +1,7 @@
 import { Button } from '@material-ui/core'
 import { JobRequestCreationContext } from 'components/JobRequestCreation'
 import { useCommandsParameterized } from 'hooks/useCommandsParameterized'
+import { commandIsDynamic } from 'pages/CommandView'
 import {
   CannotReExecuteButton,
   systemCommandPairFromArgs,
@@ -58,6 +59,12 @@ const RemakeRequestButton = ({ request }: RemakeRequestButtonProps) => {
   if (!pair) {
     return (
       <CannotReExecuteButton message="ERROR: System or Command not available" />
+    )
+  }
+
+  if (commandIsDynamic(pair.command)) {
+    return (
+      <CannotReExecuteButton message="Replay not supported for dynamic commands" />
     )
   }
 

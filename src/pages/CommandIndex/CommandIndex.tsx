@@ -57,10 +57,10 @@ const CommandIndex = () => {
   return !error ? (
     <Box>
       <PageHeader title="Commands" description="" />
+      <Breadcrumbs breadcrumbs={breadcrumbs} />
       <Divider />
       <Table tableKey={tableKey} data={commands} columns={columns}>
         <Box mb={2}>
-          <Breadcrumbs breadcrumbs={breadcrumbs} />
           <FormControlLabel
             label="Include hidden"
             control={

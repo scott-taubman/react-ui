@@ -57,36 +57,35 @@ const UpdateJobView = () => {
     parameters,
     job: updatedJob,
   }
-  const schema = isJob
-    ? getJobSchema(getSchema(instances, undefined, parameters))
-    : getSchema(instances)
+  // const schema = isJob
+  //   ? getJobSchema(getSchema(instances, parameters))
+  //   : getSchema(instances)
   const uiSchema = getUiSchema(instances)
   // const validator = getValidator(parameters)
 
-  return (
-    <Box>
-      <PageHeader title={jobName ?? ''} description="" />
-      <Divider />
-      <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <Box>
-        <UpdateJobForm
-          schema={schema}
-          uiSchema={uiSchema}
-          initialModel={model}
-          job={job}
-          isJob={isJob}
-          // validator={validator}
-        />
-      </Box>
-      {debugEnabled && (
-        <Stack direction="row" spacing={2}>
-          <JsonCard title="Job" data={job || {}} />
-          <JsonCard title="Schema" data={schema} />
-          <JsonCard title="UI Schema" data={uiSchema} />
-        </Stack>
-      )}
-    </Box>
-  )
+  return null
+  // <Box>
+  //   <PageHeader title={jobName ?? ''} description="" />
+  //   <Divider />
+  //   <Breadcrumbs breadcrumbs={breadcrumbs} />
+  //   <Box>
+  //     <UpdateJobForm
+  //       schema={schema}
+  //       uiSchema={uiSchema}
+  //       initialModel={model}
+  //       job={job}
+  //       isJob={isJob}
+  //       // validator={validator}
+  //     />
+  //   </Box>
+  //   {debugEnabled && (
+  //     <Stack direction="row" spacing={2}>
+  //       <JsonCard title="Job" data={job || {}} />
+  //       <JsonCard title="Schema" data={schema} />
+  //       <JsonCard title="UI Schema" data={uiSchema} />
+  //     </Stack>
+  //   )}
+  // </Box>
 }
 
 export default UpdateJobView
