@@ -31,8 +31,8 @@ describe('individual command predicates', () => {
     )
     expect(hasSimpleCommandChoice(simpleDynamicCommand)).toBe(true)
     expect(hasSimpleCommandChoice(simpleDynamicCommandWithTypeahead)).toBe(true)
-    expect(!withoutSimpleDynamicCommands.some(hasSimpleCommandChoice)).toBe(
-      true,
+    expect(withoutSimpleDynamicCommands.some(hasSimpleCommandChoice)).toBe(
+      false,
     )
   })
 
@@ -45,10 +45,10 @@ describe('individual command predicates', () => {
       hasSimpleCommandFullySpecified(simpleDynamicCommandFullySpecified),
     ).toBe(true)
     expect(
-      !withoutFullySpecifiedSimpleDynamicCommand.some(
+      withoutFullySpecifiedSimpleDynamicCommand.some(
         hasSimpleCommandFullySpecified,
       ),
-    ).toBe(true)
+    ).toBe(false)
   })
 
   test('hasSimpleUrlChoice', () => {
@@ -57,7 +57,7 @@ describe('individual command predicates', () => {
     )
     expect(hasSimpleUrlChoice(simpleDynamicUrl)).toBe(true)
     expect(hasSimpleUrlChoice(simpleDynamicUrlNullable)).toBe(true)
-    expect(!withoutSimpleUrlDynamicCommands.some(hasSimpleUrlChoice)).toBe(true)
+    expect(withoutSimpleUrlDynamicCommands.some(hasSimpleUrlChoice)).toBe(false)
   })
 
   test('hasCommandChoiceWithArgs', () => {
@@ -74,7 +74,7 @@ describe('individual command predicates', () => {
       true,
     )
     expect(hasCommandChoiceWithArgs(selfReferringCommand)).toBe(true)
-    expect(!withoutCommandWithArgs.some(hasCommandChoiceWithArgs)).toBe(true)
+    expect(withoutCommandWithArgs.some(hasCommandChoiceWithArgs)).toBe(false)
   })
 
   test('hasUrlChoiceWithArgs', () => {
@@ -82,7 +82,7 @@ describe('individual command predicates', () => {
       (item) => item !== dynamicUrlWithSingleParameter,
     )
     expect(hasUrlChoiceWithArgs(dynamicUrlWithSingleParameter)).toBe(true)
-    expect(!withoutUrlChoiceWithArgs.some(hasUrlChoiceWithArgs)).toBe(true)
+    expect(withoutUrlChoiceWithArgs.some(hasUrlChoiceWithArgs)).toBe(false)
   })
 
   test('hasDynamicDictionary', () => {
@@ -95,6 +95,6 @@ describe('individual command predicates', () => {
     expect(hasDynamicDictionary(dictWithDynamicNonInstanceKeyCommand)).toBe(
       true,
     )
-    expect(!withoutDictionaryCommands.some(hasDynamicDictionary)).toBe(true)
+    expect(withoutDictionaryCommands.some(hasDynamicDictionary)).toBe(false)
   })
 })
